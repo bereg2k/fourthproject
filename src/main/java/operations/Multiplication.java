@@ -1,6 +1,7 @@
 package operations;
 
-public class Multiplication extends Operation {
+public class Multiplication extends Operation implements OperationResult {
+
     public Multiplication(float n1, float n2) {
         super(n1, n2);
     }
@@ -9,7 +10,7 @@ public class Multiplication extends Operation {
         return getN1() * getN2();
     }
 
-    public void printFloatMultiplication() {
+    public void printOperationResult() {
         System.out.printf("%.2f * %.2f = %.2f", getN1(), getN2(), multiplyTwoFloats());
     }
 }

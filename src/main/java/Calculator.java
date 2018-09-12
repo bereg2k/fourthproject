@@ -30,25 +30,25 @@ public class Calculator {
                     case 1:
                         //If user enters "1" as operation, then the program performs ADDITION
                         Addition singleSum = new Addition(n1, n2);
-                        singleSum.printFloatAddition();
+                        singleSum.printOperationResult();
                         break;
 
                     case 2:
                         //If user enters "2" as operation, then the program performs SUBTRACTION
                         Subtraction singleSubtract = new Subtraction(n1, n2);
-                        singleSubtract.printFloatSubtraction();
+                        singleSubtract.printOperationResult();
                         break;
 
                     case 3:
                         //If user enters "3" as operation, then the program performs MULTIPLICATION
                         Multiplication singleMultiplication = new Multiplication(n1, n2);
-                        singleMultiplication.printFloatMultiplication();
+                        singleMultiplication.printOperationResult();
                         break;
 
                     case 4:
                         //If user enters "4" as operation, then the program performs DIVISION
                         Division singleDivision = new Division(n1, n2);
-                        singleDivision.printFloatDivision();
+                        singleDivision.printOperationResult();
                         break;
 
                     default:
