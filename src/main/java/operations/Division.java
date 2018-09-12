@@ -1,6 +1,6 @@
 package operations;
 
-public class Division extends Operation implements OperationResult {
+public class Division extends Operation implements OperationInterface {
 
     public Division(float n1, float n2) {
         super(n1, n2);

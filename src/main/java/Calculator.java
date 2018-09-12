@@ -29,25 +29,25 @@ public class Calculator {
                 switch (operationChoice) {
                     case 1:
                         //If user enters "1" as operation, then the program performs ADDITION
-                        Addition singleSum = new Addition(n1, n2);
+                        OperationInterface singleSum = new Addition(n1, n2);
                         singleSum.printOperationResult();
                         break;
 
                     case 2:
                         //If user enters "2" as operation, then the program performs SUBTRACTION
-                        Subtraction singleSubtract = new Subtraction(n1, n2);
+                        OperationInterface singleSubtract = new Subtraction(n1, n2);
                         singleSubtract.printOperationResult();
                         break;
 
                     case 3:
                         //If user enters "3" as operation, then the program performs MULTIPLICATION
-                        Multiplication singleMultiplication = new Multiplication(n1, n2);
+                        OperationInterface singleMultiplication = new Multiplication(n1, n2);
                         singleMultiplication.printOperationResult();
                         break;
 
                     case 4:
                         //If user enters "4" as operation, then the program performs DIVISION
-                        Division singleDivision = new Division(n1, n2);
+                        OperationInterface singleDivision = new Division(n1, n2);
                         singleDivision.printOperationResult();
                         break;
 

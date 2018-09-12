@@ -1,6 +1,6 @@
 package operations;
 
-public class Subtraction extends Operation implements OperationResult {
+public class Subtraction extends Operation implements OperationInterface {
 
     public Subtraction(float n1, float n2) {
         super(n1, n2);

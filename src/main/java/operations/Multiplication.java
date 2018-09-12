@@ -1,6 +1,6 @@
 package operations;
 
-public class Multiplication extends Operation implements OperationResult {
+public class Multiplication extends Operation implements OperationInterface {
 
     public Multiplication(float n1, float n2) {
         super(n1, n2);

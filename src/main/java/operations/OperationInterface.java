@@ -1,5 +1,5 @@
 package operations;
 
-public interface OperationResult {
+public interface OperationInterface {
     void printOperationResult();
 }
