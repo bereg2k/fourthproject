@@ -26,29 +26,27 @@ public class Calculator {
                 System.out.println("Choose mathematical operation.");
                 System.out.print("Enter '1' for addition, '2' for subtraction, '3' for multiplication, '4' for division: ");
                 int operationChoice = scanner.nextInt();
+
+                Operation operation = null; //creating a new basic null operation via interface reference link
                 switch (operationChoice) {
                     case 1:
                         //If user enters "1" as operation, then the program performs ADDITION
-                        OperationInterface singleSum = new Addition(n1, n2);
-                        singleSum.printOperationResult();
+                        operation = new Addition(n1, n2);
                         break;
 
                     case 2:
                         //If user enters "2" as operation, then the program performs SUBTRACTION
-                        OperationInterface singleSubtract = new Subtraction(n1, n2);
-                        singleSubtract.printOperationResult();
+                        operation = new Subtraction(n1, n2);
                         break;
 
                     case 3:
                         //If user enters "3" as operation, then the program performs MULTIPLICATION
-                        OperationInterface singleMultiplication = new Multiplication(n1, n2);
-                        singleMultiplication.printOperationResult();
+                        operation = new Multiplication(n1, n2);
                         break;
 
                     case 4:
                         //If user enters "4" as operation, then the program performs DIVISION
-                        OperationInterface singleDivision = new Division(n1, n2);
-                        singleDivision.printOperationResult();
+                        operation = new Division(n1, n2);
                         break;
 
                     default:
@@ -56,6 +54,9 @@ public class Calculator {
                         System.out.println("Entered operation is invalid!");
                         break;
                 }
+
+                if (operation != null) //if operation became some class's object then print the result of it
+                    operation.printOperationResult();
 
                 //calling method to start again and return a flag value for "while"-cycle
                 startAgain = startAgainFunction(scanner, 'c');

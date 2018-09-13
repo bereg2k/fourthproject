@@ -1,16 +1,19 @@
 package operations;
 
-public class Multiplication extends Operation implements OperationInterface {
+/**
+ * This is a class for operation of multiplication of 2 numbers.
+ */
+public class Multiplication extends Operation {
 
     public Multiplication(float n1, float n2) {
         super(n1, n2);
     }
 
-    private float multiplyTwoFloats() {
+    public float calculateResult() { //performing the multiplication
         return getN1() * getN2();
     }
 
-    public void printOperationResult() {
-        System.out.printf("%.2f * %.2f = %.2f", getN1(), getN2(), multiplyTwoFloats());
+    public String getOperationSign(){ //getting the actual operation sign for the final output
+        return "*";
     }
 }
