@@ -7,14 +7,15 @@ import java.io.StringWriter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import static java.lang.Thread.sleep;
-
 public class Calculator {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        Logger logger = Logger.getLogger("Logger for error and stack traces");
+    public static void main(String[] args) throws IOException {
+
+        //initializing log file functionality to log errors during exception handling
+        Logger logger = Logger.getLogger("Logger for errors and stack traces");
         FileHandler logfile = new FileHandler("errors_log.log", true);
         logfile.setFormatter(new SimpleFormatter());
         logger.addHandler(logfile);
@@ -26,11 +27,11 @@ public class Calculator {
 
         while (startAgain) {
             //Main menu of the program. User can choose to open Calculator or Exit.
-            boolean goodData = false;
+            System.out.println("\nHi there! This is the MAIN MENU. What would you like to work with?");
+            boolean goodData = false; //additional variable for further exception handling
             int mainChoice = 0;
 
-            while (!goodData) {
-                System.out.println("\nHi there! This is the MAIN MENU. What would you like to work with?");
+            while (!goodData) { //section for handling input mismatch exceptions in the main menu
                 System.out.print("Enter '1' for Calculator, '2' for Exit: ");
                 try {
                     mainChoice = scanner.nextInt();
@@ -38,10 +39,10 @@ public class Calculator {
                 } catch (InputMismatchException e) {
                     System.out.println("You can only input integer values! ");
                     logStackTraceToFile(e, logger, "invalid MAIN MENU choice");
-                    scanner.next();
-                    sleep(500);
+                    scanner.next(); //clearing the buffer
                 }
             }
+
             //This branch is for accessing Calculator from the main menu.
             if (mainChoice == 1) {
                 goodData = false;
@@ -51,7 +52,7 @@ public class Calculator {
 
                 System.out.println("This is a basic console calculator.");
 
-                while (!goodData) {
+                while (!goodData) { //section for handling input mismatch exceptions in the calculator
                     try {
                         System.out.print("Enter the first number: ");
                         n1 = scanner.nextDouble();
@@ -64,8 +65,7 @@ public class Calculator {
                     } catch (InputMismatchException e) {
                         System.out.println("You can only input valid numbers here!");
                         logStackTraceToFile(e, logger, "invalid calculator's numbers/operation");
-                        scanner.next();
-                        sleep(500);
+                        scanner.next(); //clearing the buffer
                     }
                 }
 
@@ -98,17 +98,16 @@ public class Calculator {
                 }
 
                 if (operation != null) { //if operation became some class's object then print the result of it
-                    try {
+                    try {//dividing by 0 exception handling
                         operation.printOperationResult();
                     } catch (DivisionByZeroException e) {
                         System.out.println("Division by 0 will result in infinity...");
                         logStackTraceToFile(e, logger, "0 as a divider");
-                        sleep(500);
                     }
                 }
 
                 //calling method to start again and return a flag value for "while"-cycle
-                startAgain = startAgainFunction(scanner, 'c');
+                startAgain = startAgainFunction();
             }
 
             //This branch is for quitting the program from the main menu.
@@ -131,15 +130,13 @@ public class Calculator {
      * This method called at the end of iteration of main functionality.
      * It lets the user to use go back to main menu or quit the program right away.
      *
-     * @param scanner     console input parameter for user's decision
-     * @param flagForExit flag variable for appropriate "good-bye" message (depends on the user's previous choice)
      * @return boolean value for main method, so that the program could go back to main menu or quit.
      */
-    private static boolean startAgainFunction(Scanner scanner, char flagForExit) {
+    private static boolean startAgainFunction() {
         /*If user enters "y", then program goes back to main menu.
         If user enters "n", then program ends its execution.
         Otherwise, the program terminates with an error.*/
-
+        Scanner scanner = new Scanner(System.in);
         boolean startAgainLocal; //startAgainLocal - to avoid confusion with main "startAgain" variable
 
         System.out.print("\nWould you like to start again [y/n]?: ");
@@ -148,11 +145,7 @@ public class Calculator {
         if (exit.equals("y")) {
             startAgainLocal = true;
         } else if (exit.equals("n")) {
-            switch (flagForExit) {  // flagForExit - variable for correct exit message on quitting the chosen module
-                case 'c':
-                    System.out.println("\nThank you for using our Calculator! Bye!");
-                    break;
-            }
+            System.out.println("\nThank you for using our Calculator! Bye!");
             startAgainLocal = false;
         } else {
             System.err.println("Invalid input! Program aborted!");
@@ -161,10 +154,18 @@ public class Calculator {
         return startAgainLocal;
     }
 
-    private static void logStackTraceToFile(Exception e, Logger logger, String userInvalidInput) {
+    /**
+     * This method gets exception's stack trace, converts it to string value and logs it to the external file
+     *
+     * @param exception        exception to handle
+     * @param logger           log file for logging stack traces
+     * @param userInvalidInput additional string value to add some info depending on the exception handled
+     */
+    private static void logStackTraceToFile(Exception exception, Logger logger, String userInvalidInput) {
         StringWriter writer = new StringWriter();
         PrintWriter printWriter = new PrintWriter(writer);
-        e.printStackTrace(printWriter);
-        logger.info("ERROR: User has entered " + userInvalidInput + "\n" + writer.toString());
+        exception.printStackTrace(printWriter);
+        logger.setLevel(Level.FINE);
+        logger.fine("ERROR: User has entered " + userInvalidInput + ". Stack trace:\n" + writer.toString());
     }
 }

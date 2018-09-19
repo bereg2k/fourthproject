@@ -1,0 +1,106 @@
+Sep 20, 2018 1:00:49 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid MAIN MENU choice. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Calculator.main(Calculator.java:39)
+
+Sep 20, 2018 1:01:08 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid calculator's numbers/operation. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)
+	at Calculator.main(Calculator.java:63)
+
+Sep 20, 2018 1:01:22 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered 0 as a divider. Stack trace:
+exceptions.DivisionByZeroException
+	at operations.Division.calculateResult(Division.java:16)
+	at operations.Operation.printOperationResult(Operation.java:30)
+	at Calculator.main(Calculator.java:106)
+
+Sep 20, 2018 1:02:47 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid MAIN MENU choice. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Calculator.main(Calculator.java:39)
+
+Sep 20, 2018 1:02:50 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid MAIN MENU choice. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Calculator.main(Calculator.java:39)
+
+Sep 20, 2018 1:02:53 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid MAIN MENU choice. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Calculator.main(Calculator.java:39)
+
+Sep 20, 2018 1:02:57 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid calculator's numbers/operation. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)
+	at Calculator.main(Calculator.java:61)
+
+Sep 20, 2018 1:02:59 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid calculator's numbers/operation. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)
+	at Calculator.main(Calculator.java:61)
+
+Sep 20, 2018 1:03:03 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid calculator's numbers/operation. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)
+	at Calculator.main(Calculator.java:63)
+
+Sep 20, 2018 1:03:09 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered 0 as a divider. Stack trace:
+exceptions.DivisionByZeroException
+	at operations.Division.calculateResult(Division.java:16)
+	at operations.Operation.printOperationResult(Operation.java:30)
+	at Calculator.main(Calculator.java:106)
+
+Sep 20, 2018 1:05:08 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid MAIN MENU choice. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Calculator.main(Calculator.java:37)
+
+Sep 20, 2018 1:09:59 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid MAIN MENU choice. Stack trace:
+java.util.InputMismatchException: For input string: "2147483648"
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2264)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Calculator.main(Calculator.java:37)
+
+Sep 20, 2018 1:16:19 AM Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid calculator's numbers/operation. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)
+	at Calculator.main(Calculator.java:60)
+

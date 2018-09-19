@@ -12,7 +12,7 @@ public class Division extends Operation {
     }
 
     public double calculateResult() throws DivisionByZeroException { //performing the division
-        if (getN2() == 0) {
+        if (getN2() == 0) { //throwing new exception for dividing by 0
             throw new DivisionByZeroException();
         } else {
             return getN1() / getN2();
