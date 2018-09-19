@@ -1,9 +1,23 @@
+import exceptions.DivisionByZeroException;
 import operations.*;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+import static java.lang.Thread.sleep;
 
 public class Calculator {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Logger logger = Logger.getLogger("Logger for error and stack traces");
+        FileHandler logfile = new FileHandler("errors_log.log", true);
+        logfile.setFormatter(new SimpleFormatter());
+        logger.addHandler(logfile);
 
         //startAgain - variable to let the "while"-cycle below know, whether user wants to exit the program or use it again.
         //scanner - basic console input.
@@ -12,20 +26,48 @@ public class Calculator {
 
         while (startAgain) {
             //Main menu of the program. User can choose to open Calculator or Exit.
-            System.out.println("\nHi there! This is the MAIN MENU. What would you like to work with?");
-            System.out.print("Enter '1' for Calculator, '2' for Exit: ");
-            int mainChoice = scanner.nextInt();
+            boolean goodData = false;
+            int mainChoice = 0;
 
+            while (!goodData) {
+                System.out.println("\nHi there! This is the MAIN MENU. What would you like to work with?");
+                System.out.print("Enter '1' for Calculator, '2' for Exit: ");
+                try {
+                    mainChoice = scanner.nextInt();
+                    goodData = true;
+                } catch (InputMismatchException e) {
+                    System.out.println("You can only input integer values! ");
+                    logStackTraceToFile(e, logger, "invalid MAIN MENU choice");
+                    scanner.next();
+                    sleep(500);
+                }
+            }
             //This branch is for accessing Calculator from the main menu.
             if (mainChoice == 1) {
+                goodData = false;
+                double n1 = 0;
+                double n2 = 0;
+                int operationChoice = 0;
+
                 System.out.println("This is a basic console calculator.");
-                System.out.print("Enter the first number: ");
-                float n1 = scanner.nextFloat();
-                System.out.print("Enter the second number: ");
-                float n2 = scanner.nextFloat();
-                System.out.println("Choose mathematical operation.");
-                System.out.print("Enter '1' for addition, '2' for subtraction, '3' for multiplication, '4' for division: ");
-                int operationChoice = scanner.nextInt();
+
+                while (!goodData) {
+                    try {
+                        System.out.print("Enter the first number: ");
+                        n1 = scanner.nextDouble();
+                        System.out.print("Enter the second number: ");
+                        n2 = scanner.nextDouble();
+                        System.out.println("Choose mathematical operation.");
+                        System.out.print("Enter '1' for addition, '2' for subtraction, '3' for multiplication, '4' for division: ");
+                        operationChoice = scanner.nextInt();
+                        goodData = true;
+                    } catch (InputMismatchException e) {
+                        System.out.println("You can only input valid numbers here!");
+                        logStackTraceToFile(e, logger, "invalid calculator's numbers/operation");
+                        scanner.next();
+                        sleep(500);
+                    }
+                }
 
                 Operation operation = null; //creating a new basic null operation via interface reference link
                 switch (operationChoice) {
@@ -55,8 +97,15 @@ public class Calculator {
                         break;
                 }
 
-                if (operation != null) //if operation became some class's object then print the result of it
-                    operation.printOperationResult();
+                if (operation != null) { //if operation became some class's object then print the result of it
+                    try {
+                        operation.printOperationResult();
+                    } catch (DivisionByZeroException e) {
+                        System.out.println("Division by 0 will result in infinity...");
+                        logStackTraceToFile(e, logger, "0 as a divider");
+                        sleep(500);
+                    }
+                }
 
                 //calling method to start again and return a flag value for "while"-cycle
                 startAgain = startAgainFunction(scanner, 'c');
@@ -75,6 +124,7 @@ public class Calculator {
             }
         }
         scanner.close();
+        logfile.close();
     }
 
     /**
@@ -109,5 +159,12 @@ public class Calculator {
             startAgainLocal = false;
         }
         return startAgainLocal;
+    }
+
+    private static void logStackTraceToFile(Exception e, Logger logger, String userInvalidInput) {
+        StringWriter writer = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(writer);
+        e.printStackTrace(printWriter);
+        logger.info("ERROR: User has entered " + userInvalidInput + "\n" + writer.toString());
     }
 }

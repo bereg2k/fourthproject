@@ -5,11 +5,11 @@ package operations;
  */
 public class Subtraction extends Operation {
 
-    public Subtraction(float n1, float n2) {
+    public Subtraction(double n1, double n2) {
         super(n1, n2);
     }
 
-    public float calculateResult() { //performing the subtraction
+    public double calculateResult() { //performing the subtraction
         return getN1() - getN2();
     }
 

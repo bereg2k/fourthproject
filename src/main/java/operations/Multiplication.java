@@ -5,11 +5,11 @@ package operations;
  */
 public class Multiplication extends Operation {
 
-    public Multiplication(float n1, float n2) {
+    public Multiplication(double n1, double n2) {
         super(n1, n2);
     }
 
-    public float calculateResult() { //performing the multiplication
+    public double calculateResult() { //performing the multiplication
         return getN1() * getN2();
     }
 
