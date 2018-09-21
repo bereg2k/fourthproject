@@ -15,7 +15,7 @@ public class TestsAddition {
 
     @BeforeClass //method for informational message before all tests here are started
     public static void testsSetup() {
-        System.out.println("The addition test suite has started...");
+        System.out.println("The Addition test suite has started...");
     }
 
     @Test //regular addition test with 2 positive 2-digit numbers
