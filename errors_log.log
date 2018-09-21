@@ -104,3 +104,19 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)
 	at Calculator.main(Calculator.java:60)
 
+сент. 20, 2018 3:31:39 ПП Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid calculator's numbers/operation. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)
+	at Calculator.main(Calculator.java:58)
+
+сент. 20, 2018 3:32:12 ПП Calculator logStackTraceToFile
+FINE: ERROR: User has entered invalid calculator's numbers/operation. Stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextDouble(Scanner.java:2564)
+	at Calculator.main(Calculator.java:58)
+
